@@ -27,12 +27,18 @@ const Contact: React.FC = () => {
               <p className="font-semibold">
                 {isHi ? 'मोबाइल / व्हाट्सएप' : 'Mobile / WhatsApp'}
               </p>
-              <p>
+              <p className="flex flex-wrap items-center gap-2">
                 <a
                   href="tel:+917860448080"
                   className="text-primary hover:underline"
                 >
                   +91-7860448080
+                </a>
+                <a
+                  href="tel:+917860448080"
+                  className="inline-flex items-center justify-center rounded-full bg-primary/10 text-primary border border-primary/40 px-3 py-1 text-[10px] font-semibold hover:bg-primary hover:text-white hover:border-transparent transition-colors"
+                >
+                  {isHi ? 'अभी कॉल करें' : 'Call Now'}
                 </a>
               </p>
               <p className="text-[10px] text-slate-400">
