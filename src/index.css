@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, -system-ui, sans-serif;
+  background-color: #020617; /* slate-950 */
+  color: #e5e7eb; /* slate-200 */
+}
+
+/* Smooth scroll for internal links */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Hide scrollbar for horizontal nav where needed */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Utility: small breakpoint alias (xs) via container queries is handled in Tailwind using custom screens in config if needed */
