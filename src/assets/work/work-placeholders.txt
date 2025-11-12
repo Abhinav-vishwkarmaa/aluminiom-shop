@@ -1,0 +1,10 @@
+Temporary placeholder note for work gallery images.
+
+To fix current build errors and display images in Work gallery:
+- Add your real images into this folder as:
+  - work1.jpg
+  - work2.jpg
+  - work3.jpg
+  - work4.jpg
+
+These filenames are already imported in [`WorkGallery.tsx`](src/sections/WorkGallery.tsx:3), so once you place the image files here, the gallery will automatically start showing them without code changes.

@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
 import { useLanguage } from '../i18n/LanguageContext';
+import work1 from '../assets/work/work1.png';
+import work2 from '../assets/work/work2.png';
+import work3 from '../assets/work/work3.png';
+import work4 from '../assets/work/work4.png';
 
 type WorkItem = {
   titleHi: string;
@@ -10,6 +14,7 @@ type WorkItem = {
   locationEn: string;
   typeHi: string;
   typeEn: string;
+  image: string;
 };
 
 const demoWork: WorkItem[] = [
@@ -24,6 +29,7 @@ const demoWork: WorkItem[] = [
     locationEn: 'Demo: City Name / Local Area',
     typeHi: 'SS रेलिंग + ग्लास',
     typeEn: 'SS Railing + Glass',
+    image: work1,
   },
   {
     titleHi: 'एल्युमिनियम स्लाइडिंग विंडो - फ्लैट',
@@ -36,6 +42,7 @@ const demoWork: WorkItem[] = [
     locationEn: 'Demo: Residential Apartment',
     typeHi: 'एल्युमिनियम विंडो',
     typeEn: 'Aluminium Windows',
+    image: work2,
   },
   {
     titleHi: 'डिज़ाइनर SS मेन गेट',
@@ -48,6 +55,7 @@ const demoWork: WorkItem[] = [
     locationEn: 'Demo: Bungalow / Kothi',
     typeHi: 'SS गेट',
     typeEn: 'SS Gate',
+    image: work3,
   },
   {
     titleHi: 'शोरूम फ्रंट ग्लास + एल्युमिनियम फ्रेम',
@@ -60,6 +68,7 @@ const demoWork: WorkItem[] = [
     locationEn: 'Demo: Commercial Market',
     typeHi: 'ग्लास + एल्युमिनियम',
     typeEn: 'Glass + Aluminium',
+    image: work4,
   },
 ];
 
@@ -92,14 +101,14 @@ const WorkGallery: React.FC = () => {
               key={idx}
               className="group relative overflow-hidden rounded-xl bg-slate-900/80 border border-slate-800 flex flex-col"
             >
-              {/* Demo image placeholder */}
-              <div className="relative h-28 bg-gradient-to-br from-slate-800/80 via-slate-900 to-slate-950 flex items-center justify-center">
-                <div className="w-28 h-16 rounded-lg bg-slate-950/80 border border-slate-800 shadow-soft-elevated flex items-center justify-center text-[8px] text-slate-400 text-center px-2">
-                  {isHi
-                    ? `डेमो इमेज ${idx + 1}\nयहाँ अपना असली प्रोजेक्ट फोटो लगाएँ`
-                    : `Demo Image ${idx + 1}\nAdd your real project photo here`}
-                </div>
-                <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-slate-950/60 via-transparent to-transparent opacity-80" />
+              {/* Work image using assets/work images */}
+              <div className="relative h-28 bg-slate-950 overflow-hidden">
+                <img
+                  src={item.image}
+                  alt={isHi ? item.titleHi : item.titleEn}
+                  className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-900/10 to-transparent" />
               </div>
 
               {/* Content */}

@@ -1,0 +1,9 @@
+Place your work showcase images in this folder.
+
+Recommended usage:
+- Create files like: work1.jpg, work2.jpg, gate-design-1.jpg, railing-1.jpg, window-1.jpg, etc.
+- Import and use them from components such as:
+  import work1 from '../../assets/work/work1.jpg';
+  import work2 from '../../assets/work/work2.jpg';
+
+This placeholder file exists only to keep the directory in version control. It is not used by the app at runtime.
