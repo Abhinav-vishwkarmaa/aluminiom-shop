@@ -1,16 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Phone, MapPin, Mail, Clock } from '../sections/icons';
+import { useLanguage } from '../i18n/LanguageContext';
 
 const Contact: React.FC = () => {
+  const { lang } = useLanguage();
+  const isHi = lang === 'hi';
+  const [submitted, setSubmitted] = useState(false);
+
   return (
     <div className="space-y-8">
       <section className="bg-slate-900/70 border border-slate-800 rounded-2xl p-4 shadow-soft-elevated">
         <h2 className="text-xl font-heading font-semibold text-primary mb-1">
-          संपर्क करें / Contact Us
+          {isHi ? 'संपर्क करें' : 'Contact Us'}
         </h2>
         <p className="text-xs text-slate-400 mb-3">
-          मजबूत काम, साफ फिनिश और समय पर डिलीवरी। अभी कॉल करें या लोकेशन पर विज़िट करें।
-          Reliable fabrication for homes, showrooms and commercial projects.
+          {isHi
+            ? 'मजबूत काम, साफ फिनिश और समय पर डिलीवरी के लिए अभी कॉल करें या वर्कशॉप पर विज़िट करें।'
+            : 'For strong work, clean finishing and on-time delivery, call now or visit the workshop.'}
         </p>
         <div className="grid gap-3 text-xs text-slate-200">
           <div className="flex items-start gap-2">
@@ -18,10 +24,21 @@ const Contact: React.FC = () => {
               <Phone />
             </div>
             <div>
-              <p className="font-semibold">Mobile / WhatsApp</p>
-              <p>+91-98XXXXXX01</p>
+              <p className="font-semibold">
+                {isHi ? 'मोबाइल / व्हाट्सएप' : 'Mobile / WhatsApp'}
+              </p>
+              <p>
+                <a
+                  href="tel:+917860448080"
+                  className="text-primary hover:underline"
+                >
+                  +91-7860448080
+                </a>
+              </p>
               <p className="text-[10px] text-slate-400">
-                Call for site visit, measurement and quotation.
+                {isHi
+                  ? 'साइट विज़िट, नाप और अनुमान के लिए कॉल करें।'
+                  : 'Call for site visit, measurement and quotation.'}
               </p>
             </div>
           </div>
@@ -30,10 +47,14 @@ const Contact: React.FC = () => {
               <MapPin />
             </div>
             <div>
-              <p className="font-semibold">Workshop Location</p>
+              <p className="font-semibold">
+                {isHi ? 'वर्कशॉप लोकेशन' : 'Workshop Location'}
+              </p>
               <p>Maa Durga SS Stiles & Aluminium Workshop</p>
               <p className="text-[10px] text-slate-400">
-                Add your full address here for customers to find easily on Google Maps.
+                {isHi
+                  ? 'यहाँ अपना पूरा पता जोड़ें ताकि ग्राहक आपको आसानी से Google Maps पर ढूंढ सकें।'
+                  : 'Add your full address here so customers can easily find you on Google Maps.'}
               </p>
             </div>
           </div>
@@ -51,8 +72,14 @@ const Contact: React.FC = () => {
               <Clock />
             </div>
             <div>
-              <p className="font-semibold">Timings</p>
-              <p>Mon - Sun: 9:00 AM - 8:00 PM</p>
+              <p className="font-semibold">
+                {isHi ? 'समय' : 'Timings'}
+              </p>
+              <p>
+                {isHi
+                  ? 'सोम - रवि: सुबह 9:00 से रात 8:00 बजे तक'
+                  : 'Mon - Sun: 9:00 AM - 8:00 PM'}
+              </p>
             </div>
           </div>
         </div>
@@ -60,40 +87,79 @@ const Contact: React.FC = () => {
 
       <section className="bg-slate-900/60 border border-slate-800 rounded-2xl p-4">
         <h3 className="text-sm font-semibold text-slate-100 mb-2">
-          Quick Inquiry / त्वरित पूछताछ (Demo Form)
+          {isHi
+            ? 'त्वरित पूछताछ (डेमो फॉर्म)'
+            : 'Quick Inquiry (Demo Form)'}
         </h3>
         <p className="text-[10px] text-slate-500 mb-3">
-          This is a demo form UI. Connect it later with your preferred backend, WhatsApp API, or email.
+          {isHi
+            ? 'यह एक डेमो फॉर्म UI है। इसे बाद में अपने बैकएंड, व्हाट्सएप API या ईमेल से कनेक्ट कर सकते हैं।'
+            : 'This is a demo form UI. Later you can connect it to your backend, WhatsApp API, or email.'}
         </p>
-        <form className="space-y-3 text-xs">
+        <form
+          className="space-y-3 text-xs"
+          onSubmit={(e) => {
+            e.preventDefault();
+            setSubmitted(true);
+            setTimeout(() => setSubmitted(false), 2500);
+          }}
+        >
           <div className="space-y-1">
-            <label className="block text-slate-400">Name / नाम</label>
+            <label className="block text-slate-400">
+              {isHi ? 'नाम' : 'Name'}
+            </label>
             <input
               className="w-full rounded-lg bg-slate-950/70 border border-slate-700 px-3 py-2 text-xs text-slate-100 placeholder-slate-500 outline-none focus:ring-1 focus:ring-primary focus:border-primary"
-              placeholder="Enter your name / अपना नाम लिखें"
+              placeholder={
+                isHi ? 'अपना नाम लिखें' : 'Enter your name'
+              }
+              required
             />
           </div>
           <div className="space-y-1">
-            <label className="block text-slate-400">Mobile Number / मोबाइल</label>
+            <label className="block text-slate-400">
+              {isHi ? 'मोबाइल नंबर' : 'Mobile Number'}
+            </label>
             <input
               className="w-full rounded-lg bg-slate-950/70 border border-slate-700 px-3 py-2 text-xs text-slate-100 placeholder-slate-500 outline-none focus:ring-1 focus:ring-primary focus:border-primary"
-              placeholder="Your active WhatsApp / आपका व्हाट्सएप नंबर"
+              placeholder={
+                isHi
+                  ? 'आपका व्हाट्सएप / कॉन्टैक्ट नंबर'
+                  : 'Your WhatsApp / contact number'
+              }
+              required
             />
           </div>
           <div className="space-y-1">
-            <label className="block text-slate-400">Requirement / आवश्यकता</label>
+            <label className="block text-slate-400">
+              {isHi ? 'आपकी आवश्यकता' : 'Your Requirement'}
+            </label>
             <textarea
               rows={3}
               className="w-full rounded-lg bg-slate-950/70 border border-slate-700 px-3 py-2 text-xs text-slate-100 placeholder-slate-500 outline-none focus:ring-1 focus:ring-primary focus:border-primary resize-none"
-              placeholder="SS railing, aluminium window, glass railing, main gate, partition, etc."
+              placeholder={
+                isHi
+                  ? 'SS railing, aluminium window, main gate, partition आदि लिखें'
+                  : 'Describe SS railing, aluminium window, main gate, partition, etc.'
+              }
+              required
             />
           </div>
           <button
-            type="button"
+            type="submit"
             className="w-full mt-1 inline-flex items-center justify-center gap-2 rounded-xl bg-primary hover:bg-primary-dark text-white text-xs font-semibold py-2.5 shadow-soft-elevated transition-colors"
           >
-            Submit Demo (Not Connected)
+            {isHi
+              ? 'सबमिट (डेमो - असली सबमिशन नहीं)'
+              : 'Submit (Demo - Not Connected)'}
           </button>
+          {submitted && (
+            <p className="text-[10px] text-emerald-400 mt-1">
+              {isHi
+                ? 'धन्यवाद! यह डेमो मैसेज है, अभी कोई असली डेटा नहीं भेजा जाता।'
+                : 'Thank you! This is a demo message; no real data is sent.'}
+            </p>
+          )}
         </form>
       </section>
     </div>

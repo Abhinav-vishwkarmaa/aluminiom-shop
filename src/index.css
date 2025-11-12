@@ -2,27 +2,130 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Professional visual system:
+ * - Clean, trustworthy, minimal
+ * - Suits fabrication / industrial services
+ * - Uses navy + steel + warm accent for reliability and premium feel
+ */
 :root {
-  color-scheme: dark;
+  /* Core brand colors */
+  --color-primary: #1f3b5c;        /* Deep navy blue - trust, professionalism */
+  --color-primary-soft: #151b23;   /* Soft tint for subtle highlights */
+  --color-primary-dark: #152536;   /* Darker tone for hovers / header */
+
+  --color-accent: #f59e0b;         /* Warm amber accent for CTAs and highlights */
+  --color-accent-soft: rgba(245, 158, 11, 0.09);
+
+  /* Neutrals */
+  --color-bg: #070a12;             /* Page background - slate / steel */
+  --color-bg-soft: #111827;        /* Soft panels, header background */
+  --color-surface: #020817;        /* Card / section base on dark theme */
+  --color-border-subtle: rgba(148, 163, 253, 0.12);
+
+  /* Typography */
+  --color-text-main: #e5e7eb;      /* High-contrast body text */
+  --color-text-muted: #9ca3af;     /* Secondary text */
+  --color-text-soft: #6b7280;
+
+  /* Effects */
+  --color-soft-elevated: 0 18px 45px rgba(15, 23, 42, 0.55);
 }
 
+/* Reset / base */
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   min-height: 100vh;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, -system-ui, sans-serif;
-  background-color: #020617; /* slate-950 */
-  color: #e5e7eb; /* slate-200 */
+  background-color: var(--color-bg);
+  color: var(--color-text-main);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
-/* Smooth scroll for internal links */
-html {
-  scroll-behavior: smooth;
+/* Utility tokens aligned with Tailwind classes used in Layout & sections */
+
+.bg-primary {
+  background-color: var(--color-primary);
+}
+
+.bg-primary-dark {
+  background-color: var(--color-primary-dark);
+}
+
+.text-primary {
+  color: var(--color-primary);
+}
+
+.text-muted {
+  color: var(--color-text-muted);
+}
+
+.border-subtle {
+  border-color: var(--color-border-subtle);
+}
+
+/* CTA accent style for important buttons */
+.btn-accent {
+  background: var(--color-accent);
+  color: #0b1020;
+  box-shadow: 0 14px 40px rgba(245, 158, 11, 0.35);
+}
+.btn-accent:hover {
+  background: #ea8a06;
+}
+
+/* Card / section surfaces tuned for dark professional look */
+.surface-card {
+  background:
+    radial-gradient(circle at top left, rgba(148, 163, 253, 0.06), transparent),
+    var(--color-surface);
+  border: 1px solid var(--color-border-subtle);
+  box-shadow: var(--color-soft-elevated);
+  border-radius: 18px;
+  transition:
+    transform 180ms ease-out,
+    box-shadow 180ms ease-out,
+    border-color 180ms ease-out,
+    background-color 180ms ease-out;
+}
+.surface-card:hover,
+.surface-card:focus-within {
+  transform: translateY(-3px);
+  box-shadow: 0 26px 70px rgba(15, 23, 42, 0.9);
+  border-color: rgba(129, 140, 248, 0.6);
+  background:
+    radial-gradient(circle at top left, rgba(148, 163, 253, 0.09), transparent),
+    var(--color-surface);
+}
+
+/* Soft elevated shadow used in components */
+.shadow-soft-elevated {
+  box-shadow: var(--color-soft-elevated);
+}
+
+/* Smooth, subtle animations for interactive elements */
+a,
+button {
+  transition:
+    color 160ms ease-out,
+    background-color 160ms ease-out,
+    border-color 160ms ease-out,
+    box-shadow 160ms ease-out,
+    transform 160ms ease-out;
+}
+button:active,
+a:active {
+  transform: scale(0.97);
 }
 
 /* Hide scrollbar for horizontal nav where needed */
@@ -34,4 +137,16 @@ html {
   scrollbar-width: none;
 }
 
-/* Utility: small breakpoint alias (xs) via container queries is handled in Tailwind using custom screens in config if needed */
+/* Simple fade-up utility for sections (use with Tailwind classes) */
+.fade-up {
+  opacity: 0;
+  transform: translateY(8px);
+  animation: fadeUp 320ms ease-out forwards;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
