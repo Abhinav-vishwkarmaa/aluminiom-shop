@@ -27,7 +27,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           <div className="flex items-center gap-3">
             <Logo />
             <div className="flex flex-col leading-tight">
-              <h1 className="text-sm xs:text-base sm:text-lg font-semibold font-heading tracking-wide text-primary">
+              <h1 className="text-sm xs:text-base sm:text-lg font-semibold font-heading tracking-wide text-background">
                 {label(
                   'Maa Durga SS Stiles & Aluminium Workshop',
                   'Maa Durga SS Stiles & Aluminium Workshop'

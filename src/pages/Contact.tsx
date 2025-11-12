@@ -34,9 +34,10 @@ const Contact: React.FC = () => {
                 >
                   +91-7860448080
                 </a>
+                
                 <a
                   href="tel:+917860448080"
-                  className="inline-flex items-center justify-center rounded-full bg-primary/10 text-primary border border-primary/40 px-3 py-1 text-[10px] font-semibold hover:bg-primary hover:text-white hover:border-transparent transition-colors"
+                  className="inline-flex mt-1 items-center justify-center px-3 py-1.5 rounded-full bg-primary text-white text-[9px] font-semibold hover:bg-primary-dark"
                 >
                   {isHi ? 'अभी कॉल करें' : 'Call Now'}
                 </a>
@@ -56,12 +57,15 @@ const Contact: React.FC = () => {
               <p className="font-semibold">
                 {isHi ? 'वर्कशॉप लोकेशन' : 'Workshop Location'}
               </p>
-              <p>Maa Durga SS Stiles & Aluminium Workshop</p>
-              <p className="text-[10px] text-slate-400">
-                {isHi
-                  ? 'यहाँ अपना पूरा पता जोड़ें ताकि ग्राहक आपको आसानी से Google Maps पर ढूंढ सकें।'
-                  : 'Add your full address here so customers can easily find you on Google Maps.'}
-              </p>
+              <p>2JW5+3CP, SH 81, Dharmpur, Uttar Pradesh 273302</p>
+              <a
+                href="https://www.google.com/maps?s=web&lqi=ChJkaGFyYW1wdXIgY2hhdXJhaGFIv7HpzIC6gIAIWiAQABABGAAYASISZGhhcmFtcHVyIGNoYXVyYWhhMgJoaZIBBXN0b3JlqgE7EAEyHxABIhsUPDfzhJu_q4xVF3_5PEVk6lU7UcPLbKf-5FIyFhACIhJkaGFyYW1wdXIgY2hhdXJhaGE&vet=12ahUKEwiR9aGDju2QAxVRi2MGHYwWEdcQ1YkKegQIJBAB..i&cs=1&um=1&ie=UTF-8&fb=1&gl=in&sa=X&geocode=KbXLQHDAAZQ5MWmk4NxJ0tbN&daddr=2JW5%2B3CP,+SH+81,+Dharmpur,+Uttar+Pradesh+273302"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex mt-1 items-center justify-center px-3 py-1.5 rounded-full bg-primary text-white text-[9px] font-semibold hover:bg-primary-dark"
+              >
+                {isHi ? 'Google Map पर देखें' : 'View on Google Maps'}
+              </a>
             </div>
           </div>
           <div className="flex items-start gap-2">

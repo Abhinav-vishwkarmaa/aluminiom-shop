@@ -2,36 +2,94 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Professional visual system:
- * - Clean, trustworthy, minimal
- * - Suits fabrication / industrial services
- * - Uses navy + steel + warm accent for reliability and premium feel
- */
+/* ==========================================
+   Light + Dark Visual System
+   Focus: Clean, readable, modern professional UI
+   ========================================== */
+
 :root {
-  /* Core brand colors */
-  --color-primary: #1f3b5c;        /* Deep navy blue - trust, professionalism */
-  --color-primary-soft: #151b23;   /* Soft tint for subtle highlights */
-  --color-primary-dark: #152536;   /* Darker tone for hovers / header */
+  /* === Brand Colors === */
+  --color-primary: #2563eb;           /* Blue 600 */
+  --color-primary-soft: #dbeafe;      /* Blue 100 */
+  --color-primary-dark: #1d4ed8;      /* Blue 700 */
 
-  --color-accent: #f59e0b;         /* Warm amber accent for CTAs and highlights */
-  --color-accent-soft: rgba(245, 158, 11, 0.09);
+  /* === Secondary & Accent === */
+  --color-secondary: #7c3aed;         /* Indigo 600 */
+  --color-secondary-soft: #ede9fe;    /* Indigo 100 */
 
-  /* Neutrals */
-  --color-bg: #070a12;             /* Page background - slate / steel */
-  --color-bg-soft: #111827;        /* Soft panels, header background */
-  --color-surface: #020817;        /* Card / section base on dark theme */
-  --color-border-subtle: rgba(148, 163, 253, 0.12);
+  --color-accent: #f97316;            /* Orange 500 (CTA / highlight) */
+  --color-accent-soft: rgba(249, 115, 22, 0.08);
 
-  /* Typography */
-  --color-text-main: #e5e7eb;      /* High-contrast body text */
-  --color-text-muted: #9ca3af;     /* Secondary text */
-  --color-text-soft: #6b7280;
+  /* === Semantic Colors === */
+  --color-success: #10b981;           /* Emerald 500 */
+  --color-success-soft: #d1fae5;
 
-  /* Effects */
-  --color-soft-elevated: 0 18px 45px rgba(15, 23, 42, 0.55);
+  --color-warning: #facc15;           /* Amber 400 */
+  --color-warning-soft: #fef9c3;
+
+  --color-error: #ef4444;             /* Red 500 */
+  --color-error-soft: #fee2e2;
+
+  /* === Backgrounds === */
+  --color-bg: #f9fafb;                /* Page background */
+  --color-bg-soft: #ffffff;           /* Cards / headers */
+  --color-surface: #ffffff;           /* Elevated surfaces */
+
+  /* === Borders === */
+  --color-border-subtle: rgba(148, 163, 253, 0.22);
+
+  /* === Typography === */
+  --color-text-main: #111827;         /* Near black */
+  --color-text-muted: #6b7280;        /* Gray 500 */
+  --color-text-soft: #9ca3af;         /* Gray 400 */
+
+  /* === Shadows & Elevation === */
+  --color-soft-elevated: 0 14px 40px rgba(15, 23, 42, 0.06);
+
+  /* === Transitions === */
+  --transition-smooth: 160ms ease-out;
 }
 
-/* Reset / base */
+/* ==========================================
+   Dark Mode
+   ========================================== */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-primary: #3b82f6;           /* Blue 500 */
+    --color-primary-soft: #1e3a8a;      /* Blue 900 */
+    --color-primary-dark: #1e40af;
+
+    --color-secondary: #8b5cf6;         /* Indigo 500 */
+    --color-secondary-soft: #312e81;
+
+    --color-accent: #fb923c;            /* Orange 400 */
+    --color-accent-soft: rgba(251, 146, 60, 0.1);
+
+    --color-success: #34d399;           /* Emerald 400 */
+    --color-success-soft: #064e3b;
+
+    --color-warning: #fcd34d;           /* Amber 300 */
+    --color-warning-soft: #78350f;
+
+    --color-error: #f87171;             /* Red 400 */
+    --color-error-soft: #450a0a;
+
+    --color-bg: #0f172a;                /* Slate 900 */
+    --color-bg-soft: #1e293b;           /* Slate 800 */
+    --color-surface: #1e293b;           /* Elevated */
+    --color-border-subtle: rgba(148, 163, 253, 0.12);
+
+    --color-text-main: #f8fafc;         /* Very light text */
+    --color-text-muted: #94a3b8;
+    --color-text-soft: #64748b;
+
+    --color-soft-elevated: 0 14px 40px rgba(0, 0, 0, 0.3);
+  }
+}
+
+/* ==========================================
+   Base
+   ========================================== */
 *,
 *::before,
 *::after {
@@ -45,90 +103,92 @@ html {
 body {
   margin: 0;
   min-height: 100vh;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, -system-ui, sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   background-color: var(--color-bg);
   color: var(--color-text-main);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
 
-/* Utility tokens aligned with Tailwind classes used in Layout & sections */
+/* ==========================================
+   Utility Tokens (Tailwind-Compatible)
+   ========================================== */
+.bg-primary { background-color: var(--color-primary); }
+.bg-primary-dark { background-color: var(--color-primary-dark); }
+.bg-secondary { background-color: var(--color-secondary); }
+.bg-surface { background-color: var(--color-surface); }
 
-.bg-primary {
-  background-color: var(--color-primary);
-}
+.text-primary { color: var(--color-primary); }
+.text-secondary { color: var(--color-secondary); }
+.text-accent { color: var(--color-accent); }
+.text-muted { color: var(--color-text-muted); }
 
-.bg-primary-dark {
-  background-color: var(--color-primary-dark);
-}
+.border-subtle { border-color: var(--color-border-subtle); }
 
-.text-primary {
-  color: var(--color-primary);
-}
-
-.text-muted {
-  color: var(--color-text-muted);
-}
-
-.border-subtle {
-  border-color: var(--color-border-subtle);
-}
-
-/* CTA accent style for important buttons */
+/* ==========================================
+   Buttons & Interactive
+   ========================================== */
 .btn-accent {
   background: var(--color-accent);
   color: #0b1020;
   box-shadow: 0 14px 40px rgba(245, 158, 11, 0.35);
+  transition: all var(--transition-smooth);
 }
 .btn-accent:hover {
   background: #ea8a06;
+  transform: translateY(-1px);
 }
 
-/* Card / section surfaces tuned for dark professional look */
+/* Primary Button */
+.btn-primary {
+  background: var(--color-primary);
+  color: #fff;
+  border-radius: 8px;
+  padding: 0.75rem 1.5rem;
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.25);
+}
+.btn-primary:hover {
+  background: var(--color-primary-dark);
+  transform: translateY(-2px);
+}
+
+/* ==========================================
+   Card / Surface
+   ========================================== */
 .surface-card {
-  background:
-    radial-gradient(circle at top left, rgba(148, 163, 253, 0.06), transparent),
-    var(--color-surface);
+  background-color: var(--color-surface);
   border: 1px solid var(--color-border-subtle);
   box-shadow: var(--color-soft-elevated);
-  border-radius: 18px;
-  transition:
-    transform 180ms ease-out,
-    box-shadow 180ms ease-out,
-    border-color 180ms ease-out,
-    background-color 180ms ease-out;
+  border-radius: 16px;
+  transition: transform var(--transition-smooth), box-shadow var(--transition-smooth), border-color var(--transition-smooth);
 }
 .surface-card:hover,
 .surface-card:focus-within {
   transform: translateY(-3px);
-  box-shadow: 0 26px 70px rgba(15, 23, 42, 0.9);
-  border-color: rgba(129, 140, 248, 0.6);
-  background:
-    radial-gradient(circle at top left, rgba(148, 163, 253, 0.09), transparent),
-    var(--color-surface);
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+  border-color: rgba(37, 99, 235, 0.35);
 }
 
-/* Soft elevated shadow used in components */
-.shadow-soft-elevated {
-  box-shadow: var(--color-soft-elevated);
-}
-
-/* Smooth, subtle animations for interactive elements */
+/* ==========================================
+   Animations & Micro-interactions
+   ========================================== */
 a,
 button {
   transition:
-    color 160ms ease-out,
-    background-color 160ms ease-out,
-    border-color 160ms ease-out,
-    box-shadow 160ms ease-out,
-    transform 160ms ease-out;
+    color var(--transition-smooth),
+    background-color var(--transition-smooth),
+    border-color var(--transition-smooth),
+    box-shadow var(--transition-smooth),
+    transform var(--transition-smooth);
 }
 button:active,
 a:active {
   transform: scale(0.97);
 }
 
-/* Hide scrollbar for horizontal nav where needed */
+/* ==========================================
+   Scrollbars & Effects
+   ========================================== */
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
@@ -137,13 +197,14 @@ a:active {
   scrollbar-width: none;
 }
 
-/* Simple fade-up utility for sections (use with Tailwind classes) */
+/* ==========================================
+   Motion Utilities
+   ========================================== */
 .fade-up {
   opacity: 0;
   transform: translateY(8px);
   animation: fadeUp 320ms ease-out forwards;
 }
-
 @keyframes fadeUp {
   to {
     opacity: 1;
